@@ -61,15 +61,15 @@ CREATE OR REPLACE TEMPORARY TABLE TMP_CLIENT_LIST AS (
                 EL.CSTM_TRFC_ID
                 , ACC.ACCT_ID
                 , ACC.ACCT_NM
-          FROM &{SF_DATABASE}.TDSYNC."RBI_SF_ACCOUNT" ACC
-          JOIN &{SF_DATABASE}.TDSYNC."RBI_SF_TRAFFIC_ID_ELEMENT" EL
+          FROM &{SF_DATABASE}.EDS."RBI_SF_ACCOUNT" ACC
+          JOIN &{SF_DATABASE}.EDS."RBI_SF_TRAFFIC_ID_ELEMENT" EL
               ON ACC.ACCT_ID = EL.CSTM_ACCT_ID
               AND EL.CURRENT_FLG ='Y'
               AND   CSTM_TRFC_TYP ='Account'
               and (acc.eff_end_dt = '2099-12-31' or acc.eff_end_dt='2099/12/31')
               and acc.sf_use_flg = 1
           JOIN (SELECT DISTINCT ACCT_ID 
-                FROM &{SF_DATABASE}.TDSYNC."RBI_SF_OPPORTUNITY"
+                FROM &{SF_DATABASE}.EDS."RBI_SF_OPPORTUNITY"
                 WHERE SRC_DEL_FLG=0 AND UPPER(DESC_TV_SQUARED) LIKE '%#SITEATTRIBUTION%'
                ) O
               ON ACC.ACCT_ID=O.ACCT_ID
