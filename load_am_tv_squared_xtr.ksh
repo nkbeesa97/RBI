@@ -20,6 +20,7 @@ source ${MINICONDA_ACTIVATE} ${MINICONDA_ENV}
 # 10/06/2021   Hannah Zhu        4.0   default value 'Undefined' as BOOKED_SYSCODE_DESC when it's null
 # 09/01/2021   Tharini S         5.0   Removed acct_key and current_flg='Y' and added eff_end_dt ='2099-12-31' and sf_use_flg = 1
 # 09/20/2021   Priscilla Thomas  6.0   SRDATA-15793: Update Partner Factor Logic Zip Level
+# 03/01/2022   Nanda Beesa	 7.0   TDSYNC removal changes
 #--------------------------------------------------------------------------------------
 
 if [ $# -ne 1 ]
@@ -38,7 +39,7 @@ V_DATE=$(date '+%Y-%m-%d')
 
 
 # TD_DATABASE_RBI_EDS="${ENVR}_RBI.EDSV"
-TD_DATABASE_RBI_EDS="TDSYNC"
+TD_DATABASE_RBI_EDS="EDS"
 
 
 
